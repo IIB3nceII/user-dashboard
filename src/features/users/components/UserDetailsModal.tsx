@@ -20,10 +20,7 @@ const style = {
 
 const UserDetailsModal = ({ open, onClose, user }: UserDetailsModalProps) => {
   return (
-    <Modal
-      open={open}
-      onClose={onClose}
-    >
+    <Modal open={open} onClose={onClose}>
       <Box sx={style}>
         <Typography id="user-details-modal-title" variant="h6" component="h2">
           User Details
@@ -31,9 +28,12 @@ const UserDetailsModal = ({ open, onClose, user }: UserDetailsModalProps) => {
         <Typography id="user-details-modal-description" sx={{ mt: 2 }}>
           Name: {user.name}
         </Typography>
-        <Typography>Email: {user.email}</Typography>
         <Typography>Username: {user.username}</Typography>
+        <Typography>Email: {user.email}</Typography>
+        <Typography>Phone: {user.phone}</Typography>
+        <Typography>Website: {user.website}</Typography>
         <Typography>Company: {user.company.name}</Typography>
+        <Typography>Address: {user.address.city}</Typography>
       </Box>
     </Modal>
   )
