@@ -1,15 +1,13 @@
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
+import RefreshOutlinedIcon from '@mui/icons-material/RefreshOutlined'
+import { IconButton, Tooltip } from '@mui/material'
 import {
   MaterialReactTable,
-  MRT_GlobalFilterTextField,
   MRT_ShowHideColumnsButton,
-  MRT_ToggleFullScreenButton,
   useMaterialReactTable,
   type MRT_ColumnDef
 } from 'material-react-table'
 import type { User } from '../../../types'
-import { IconButton, Tooltip } from '@mui/material'
-import RefreshOutlinedIcon from '@mui/icons-material/RefreshOutlined'
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
 
 type UsersTableProps = {
   columns: MRT_ColumnDef<User>[]
