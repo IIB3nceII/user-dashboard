@@ -13,7 +13,12 @@ type UsersTableProps = {
 const UsersTable = ({ columns, users }: UsersTableProps) => {
   const table = useMaterialReactTable({
     columns,
-    data: users
+    data: users,
+    muiTableBodyRowProps: ({ row }) => ({
+      onClick: () => {
+        console.log('Row clicked:', row.original)
+      }
+    })
   })
 
   return <MaterialReactTable table={table} />

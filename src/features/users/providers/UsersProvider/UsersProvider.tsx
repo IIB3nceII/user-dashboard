@@ -6,7 +6,7 @@ import type { User } from '../../../../types'
 
 type UsersContextType = {
   users: User[]
-  isLoading: boolean
+  isError: boolean
   isPending: boolean
   error: Error | null
 }
@@ -14,10 +14,10 @@ type UsersContextType = {
 const UsersContext = createContext<UsersContextType | undefined>(undefined)
 
 export const UsersProvider = ({ children }: { children: ReactNode }) => {
-  const { users, isLoading, isPending, error } = useUsers()
+  const { users, isError, isPending, error } = useUsers()
 
   return (
-    <UsersContext.Provider value={{ users, isLoading, isPending, error }}>
+    <UsersContext.Provider value={{ users, isError, isPending, error }}>
       {children}
     </UsersContext.Provider>
   )

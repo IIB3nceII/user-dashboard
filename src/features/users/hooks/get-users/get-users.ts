@@ -8,14 +8,14 @@ const getUsers = async (): Promise<User[]> => {
 }
 
 const useUsers = () => {
-  const { data, isLoading, isPending, error } = useQuery<User[]>({
+  const { data, isError, isPending, error } = useQuery<User[]>({
     queryKey: ['users'],
     queryFn: getUsers
   })
 
   return {
     users: data || [],
-    isLoading,
+    isError,
     isPending,
     error
   }

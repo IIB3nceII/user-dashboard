@@ -31,7 +31,16 @@ const UsersDashboard = () => {
     []
   )
 
-  const { users } = useUsersContext()
+  const { users, isPending, isError, error } = useUsersContext()
+
+  if (isPending) {
+    return <div>Loading...</div>
+  }
+
+  if (isError && error instanceof Error) {
+    return <div>Error: {error?.message}</div>
+  }
+
   return <UsersTable columns={COLUMNS} users={users} />
 }
 
