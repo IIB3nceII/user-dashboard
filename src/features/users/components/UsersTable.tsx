@@ -8,15 +8,16 @@ import type { User } from '../../../types'
 type UsersTableProps = {
   columns: MRT_ColumnDef<User>[]
   users: User[]
+  onRowClick?: (user: User) => void
 }
 
-const UsersTable = ({ columns, users }: UsersTableProps) => {
+const UsersTable = ({ columns, users, onRowClick }: UsersTableProps) => {
   const table = useMaterialReactTable({
     columns,
     data: users,
     muiTableBodyRowProps: ({ row }) => ({
       onClick: () => {
-        console.log('Row clicked:', row.original)
+        onRowClick?.(row.original)
       }
     })
   })
