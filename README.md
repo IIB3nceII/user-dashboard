@@ -1,8 +1,6 @@
 # User Dashboard
 
-A simple React + TypeScript dashboard to view user data fetched from JsonPlaceholder API. The app is built with Material UI, Material React Table.
-
-⸻
+A simple React dashboard to view user data from JsonPlaceholder API. The app is built with Material UI, Material React Table.
 
 ## Getting Started
 
