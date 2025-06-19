@@ -1,5 +1,6 @@
 import {
   MaterialReactTable,
+  MRT_GlobalFilterTextField,
   MRT_ShowHideColumnsButton,
   MRT_ToggleFullScreenButton,
   useMaterialReactTable,
@@ -28,6 +29,7 @@ const UsersTable = ({
   const table = useMaterialReactTable({
     columns,
     data: users,
+    initialState: { showGlobalFilter: true },
     muiTableBodyRowProps: ({ row }) => ({
       onClick: () => {
         onRowClick?.(row.original)
@@ -47,7 +49,6 @@ const UsersTable = ({
         </Tooltip>
 
         <MRT_ShowHideColumnsButton table={table} />
-        <MRT_ToggleFullScreenButton table={table} />
       </>
     )
   })
