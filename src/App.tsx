@@ -1,10 +1,13 @@
 import './App.css'
+import { UsersTable } from './features'
 import Providers from './providers'
 
 function App() {
   return (
     <Providers>
-      <main>hi</main>
+      <main>
+        <UsersTable />
+      </main>
     </Providers>
   )
 }
