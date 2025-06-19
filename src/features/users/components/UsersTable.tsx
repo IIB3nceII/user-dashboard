@@ -8,19 +8,22 @@ import {
 import type { User } from '../../../types'
 import { IconButton, Tooltip } from '@mui/material'
 import RefreshOutlinedIcon from '@mui/icons-material/RefreshOutlined'
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
 
 type UsersTableProps = {
   columns: MRT_ColumnDef<User>[]
   users: User[]
-  onRowClick?: (user: User) => void
-  onRefresh?: () => void
+  onRowClick: (user: User) => void
+  onRefresh: () => void
+  onOpenCreateUser: () => void
 }
 
 const UsersTable = ({
   columns,
   users,
   onRowClick,
-  onRefresh
+  onRefresh,
+  onOpenCreateUser
 }: UsersTableProps) => {
   const table = useMaterialReactTable({
     columns,
@@ -32,8 +35,13 @@ const UsersTable = ({
     }),
     renderToolbarInternalActions: ({ table }) => (
       <>
+        <Tooltip title="Add User">
+          <IconButton onClick={() => onOpenCreateUser()}>
+            <AddOutlinedIcon />
+          </IconButton>
+        </Tooltip>
         <Tooltip title="Refresh">
-          <IconButton onClick={() => onRefresh?.()}>
+          <IconButton onClick={() => onRefresh()}>
             <RefreshOutlinedIcon />
           </IconButton>
         </Tooltip>

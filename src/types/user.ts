@@ -24,4 +24,20 @@ export const UserSchema = z.object({
   })
 })
 
+export const CreateUserSchema = UserSchema.pick({
+  name: true,
+  username: true,
+  email: true,
+  phone: true,
+  website: true
+}).extend({
+  address: UserSchema.shape.address.pick({
+    city: true
+  }),
+  company: UserSchema.shape.company.pick({
+    name: true
+  })
+})
+
 export type User = z.infer<typeof UserSchema>
+export type CreateUser = z.infer<typeof CreateUserSchema>

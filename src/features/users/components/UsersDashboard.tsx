@@ -5,6 +5,7 @@ import { useUsersContext } from '../providers'
 import UserDetailsModal from './UserDetailsModal'
 import UsersTable from './UsersTable'
 import { Typography } from '@mui/material'
+import CreateUserModal from './CreateUserModal'
 
 const COLUMNS: MRT_ColumnDef<User>[] = [
   {
@@ -32,6 +33,7 @@ const COLUMNS: MRT_ColumnDef<User>[] = [
 const UsersDashboard = () => {
   const { users, isPending, isError, error, refetch } = useUsersContext()
   const [selectedUser, setSelectedUser] = useState<User | null>(null)
+  const [openCreateUserModal, setOpenCreateUserModal] = useState<boolean>(false)
 
   const openUserDetails = (user: User) => {
     setSelectedUser(user)
@@ -65,12 +67,19 @@ const UsersDashboard = () => {
         users={users}
         onRowClick={openUserDetails}
         onRefresh={refetch}
+        onOpenCreateUser={() => setOpenCreateUserModal(true)}
       />
       {selectedUser && (
         <UserDetailsModal
           open={!!selectedUser}
           onClose={closeUserDetails}
           user={selectedUser}
+        />
+      )}
+      {openCreateUserModal && (
+        <CreateUserModal
+          open={openCreateUserModal}
+          onClose={() => setOpenCreateUserModal(false)}
         />
       )}
     </>

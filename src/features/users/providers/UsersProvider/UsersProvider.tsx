@@ -1,8 +1,6 @@
-// create react context for users
-
 import { createContext, useContext, type ReactNode } from 'react'
+import type { CreateUser, User } from '../../../../types'
 import { useUsers } from '../../hooks'
-import type { User } from '../../../../types'
 
 type UsersContextType = {
   users: User[]
@@ -10,16 +8,40 @@ type UsersContextType = {
   isPending: boolean
   refetch: () => void
   error: Error | null
+  createUser: (user: CreateUser) => void
+  isCreateUserPending: boolean
+  isCreateUserError: boolean
+  createUserError: Error | null
 }
 
 const UsersContext = createContext<UsersContextType | undefined>(undefined)
 
 export const UsersProvider = ({ children }: { children: ReactNode }) => {
-  const { users, isError, isPending, error, refetch } = useUsers()
+  const {
+    users,
+    isError,
+    isPending,
+    error,
+    refetch,
+    createUser,
+    isCreateUserPending,
+    isCreateUserError,
+    createUserError
+  } = useUsers()
 
   return (
     <UsersContext.Provider
-      value={{ users, isError, isPending, error, refetch }}
+      value={{
+        users,
+        isError,
+        isPending,
+        error,
+        refetch,
+        createUser,
+        isCreateUserPending,
+        isCreateUserError,
+        createUserError
+      }}
     >
       {children}
     </UsersContext.Provider>

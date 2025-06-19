@@ -1,1 +1,1 @@
-export { default as useUsers } from './get-users'
+export { default as useUsers } from './useUsers'
