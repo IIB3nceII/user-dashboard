@@ -4,6 +4,7 @@ import type { User } from '../../../types'
 import { useUsersContext } from '../providers'
 import UserDetailsModal from './UserDetailsModal'
 import UsersTable from './UsersTable'
+import { Typography } from '@mui/material'
 
 const COLUMNS: MRT_ColumnDef<User>[] = [
   {
@@ -41,11 +42,20 @@ const UsersDashboard = () => {
   }
 
   if (isPending) {
-    return <div>Loading...</div>
+    return (
+      <Typography variant="body1" component="p" gutterBottom>
+        Loading...
+      </Typography>
+    )
   }
 
   if (isError && error instanceof Error) {
-    return <div>Error: {error?.message}</div>
+    return (
+      <Typography variant="body1" component="p" color="error">
+        Error:{' '}
+        {error.message?.length > 0 ? error.message : 'Something went wrong'}
+      </Typography>
+    )
   }
 
   return (
