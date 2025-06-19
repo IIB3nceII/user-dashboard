@@ -29,7 +29,7 @@ const COLUMNS: MRT_ColumnDef<User>[] = [
 ] as const
 
 const UsersDashboard = () => {
-  const { users, isPending, isError, error } = useUsersContext()
+  const { users, isPending, isError, error, refetch } = useUsersContext()
   const [selectedUser, setSelectedUser] = useState<User | null>(null)
 
   const openUserDetails = (user: User) => {
@@ -54,6 +54,7 @@ const UsersDashboard = () => {
         columns={COLUMNS}
         users={users}
         onRowClick={openUserDetails}
+        onRefresh={refetch}
       />
       {selectedUser && (
         <UserDetailsModal

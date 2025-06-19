@@ -8,7 +8,7 @@ const getUsers = async (): Promise<User[]> => {
 }
 
 const useUsers = () => {
-  const { data, isError, isPending, error } = useQuery<User[]>({
+  const { data, isError, isPending, error, refetch } = useQuery<User[]>({
     queryKey: ['users'],
     queryFn: getUsers
   })
@@ -17,7 +17,8 @@ const useUsers = () => {
     users: data || [],
     isError,
     isPending,
-    error
+    error,
+    refetch
   }
 }
 

@@ -8,16 +8,19 @@ type UsersContextType = {
   users: User[]
   isError: boolean
   isPending: boolean
+  refetch: () => void
   error: Error | null
 }
 
 const UsersContext = createContext<UsersContextType | undefined>(undefined)
 
 export const UsersProvider = ({ children }: { children: ReactNode }) => {
-  const { users, isError, isPending, error } = useUsers()
+  const { users, isError, isPending, error, refetch } = useUsers()
 
   return (
-    <UsersContext.Provider value={{ users, isError, isPending, error }}>
+    <UsersContext.Provider
+      value={{ users, isError, isPending, error, refetch }}
+    >
       {children}
     </UsersContext.Provider>
   )

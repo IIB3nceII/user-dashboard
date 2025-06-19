@@ -23,8 +23,6 @@ const UserDetailsModal = ({ open, onClose, user }: UserDetailsModalProps) => {
     <Modal
       open={open}
       onClose={onClose}
-      aria-labelledby="user-details-modal-title"
-      aria-describedby="user-details-modal-description"
     >
       <Box sx={style}>
         <Typography id="user-details-modal-title" variant="h6" component="h2">
