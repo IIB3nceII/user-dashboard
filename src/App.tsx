@@ -1,7 +1,12 @@
 import './App.css'
+import Providers from './providers'
 
 function App() {
-  return <main>hi</main>
+  return (
+    <Providers>
+      <main>hi</main>
+    </Providers>
+  )
 }
 
 export default App
