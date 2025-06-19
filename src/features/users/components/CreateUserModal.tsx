@@ -75,14 +75,19 @@ const CreateUserModal = ({
 
   return (
     <>
-      <Modal open={open} onClose={onClose}>
+      <Modal
+        open={open}
+        onClose={onClose}
+        sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      >
         <Box
           sx={{
             p: 4,
             bgcolor: 'background.paper',
             borderRadius: 2,
             overflowY: 'auto',
-            maxHeight: '90vh'
+            maxHeight: '90vh',
+            maxWidth: '500px'
           }}
           onClick={(e) => e.stopPropagation()}
         >
